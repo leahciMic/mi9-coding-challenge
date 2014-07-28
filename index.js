@@ -1,4 +1,4 @@
-var express = require('express-as-promised');
+var express = require('express');
 var lodash = require('lodash');
 var bodyParser = require('body-parser');
 
@@ -10,14 +10,13 @@ app.use(bodyParser.text({
 }));
 
 app.post('/', function(request, response) {
-  console.log(request.body);
   var payload = request.body;
 
   try {
     payload = JSON.parse(request.body).payload;
   } catch (e) {
     response.status(400);
-    return {error: 'Could not decode request: JSON parsing failed'};
+    return response.send({error: 'Could not decode request: JSON parsing failed'});
   }
 
   var shows = payload.filter(function(show) {
@@ -29,8 +28,8 @@ app.post('/', function(request, response) {
       title: show.title
     };
   });
-
-  return {response: shows};
+  
+  response.send({response: shows});
 });
 
 console.log('Listening on :' + PORT);

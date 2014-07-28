@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm install && ./node_modules/.bin/mocha specs/"
   },
-  "author": "",
+  "author": "Michael Leaney <leahcimic@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "express-as-promised": "^0.1.10",
     "lodash": "^2.4.1",
+    "express": "^4.7.2",
     "body-parser": "^1.5.2"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^1.21.3",
+    "request": "^2.39.0"
   }
 }
